@@ -1,0 +1,48 @@
+[debug] [2025-11-10T21:36:31.325Z] ----------------------------------------------------------------------
+[debug] [2025-11-10T21:36:31.328Z] Command:       C:\nvm4w\nodejs\node.exe C:\Users\david\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2025-11-10T21:36:31.328Z] CLI Version:   14.22.0
+[debug] [2025-11-10T21:36:31.328Z] Platform:      win32
+[debug] [2025-11-10T21:36:31.329Z] Node Version:  v20.19.5
+[debug] [2025-11-10T21:36:31.329Z] Time:          Mon Nov 10 2025 18:36:31 GMT-0300 (hora de verano de Chile)
+[debug] [2025-11-10T21:36:31.329Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-10T21:36:31.556Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"flutter"}
+[debug] [2025-11-10T21:36:31.561Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-10T21:36:31.561Z] > authorizing via signed-in user (david16gta@gmail.com)
+[debug] [2025-11-10T21:36:31.561Z] [iam] checking project senior-fitness-app for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-11-10T21:36:31.563Z] Checked if tokens are valid: false, expires at: 1762810302985
+[debug] [2025-11-10T21:36:31.563Z] Checked if tokens are valid: false, expires at: 1762810302985
+[debug] [2025-11-10T21:36:31.563Z] > refreshing access token with scopes: []
+[debug] [2025-11-10T21:36:31.565Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-10T21:36:31.566Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-10T21:36:31.766Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-10T21:36:31.767Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-10T21:36:31.788Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app:testIamPermissions [none]
+[debug] [2025-11-10T21:36:31.788Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app:testIamPermissions x-goog-quota-user=projects/senior-fitness-app
+[debug] [2025-11-10T21:36:31.788Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-11-10T21:36:33.251Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app:testIamPermissions 200
+[debug] [2025-11-10T21:36:33.251Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-11-10T21:36:33.252Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:33.252Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:33.252Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/senior-fitness-app/serviceAccounts/senior-fitness-app@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-11-10T21:36:33.252Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/senior-fitness-app/serviceAccounts/senior-fitness-app@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-11-10T21:36:34.388Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/senior-fitness-app/serviceAccounts/senior-fitness-app@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-11-10T21:36:34.388Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/senior-fitness-app/serviceAccounts/senior-fitness-app@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'senior-fitness-app'...
+[info] 
+[info] i  deploying functions 
+[debug] [2025-11-10T21:36:34.393Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:34.393Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:34.393Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app [none]
+[debug] [2025-11-10T21:36:34.698Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app 200
+[debug] [2025-11-10T21:36:34.699Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/senior-fitness-app {"projectNumber":"907376373345","projectId":"senior-fitness-app","lifecycleState":"ACTIVE","name":"senior-fitness-app","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-10-28T19:11:41.034069Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-11-10T21:36:34.702Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:34.702Z] Checked if tokens are valid: true, expires at: 1762814190767
+[debug] [2025-11-10T21:36:34.702Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/senior-fitness-app/adminSdkConfig [none]
+[debug] [2025-11-10T21:36:35.220Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/senior-fitness-app/adminSdkConfig 200
+[debug] [2025-11-10T21:36:35.220Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/senior-fitness-app/adminSdkConfig {"projectId":"senior-fitness-app","storageBucket":"senior-fitness-app.firebasestorage.app"}

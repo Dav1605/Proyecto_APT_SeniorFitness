@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "907376373345",
+    "project_id": "senior-fitness-app",
+    "storage_bucket": "senior-fitness-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907376373345:android:ef64104971b6a5bb9b0420",
+        "android_client_info": {
+          "package_name": "com.example.senior_fitness_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJcaz3XX5mRtMMmE-QKUExwdmkkvjws2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
