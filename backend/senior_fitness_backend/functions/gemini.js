@@ -10,8 +10,8 @@ if (!admin.apps.length) {
   admin.initializeApp({
     projectId: "senior-fitness-app", // fuerza a usar el proyecto correcto
   });
-  console.log("🔥 Firebase Admin inicializado correctamente");
-  console.log("📁 Proyecto detectado:", process.env.GCLOUD_PROJECT || process.env.GCP_PROJECT);
+  console.log(" Firebase Admin inicializado correctamente");
+  console.log(" Proyecto detectado:", process.env.GCLOUD_PROJECT || process.env.GCP_PROJECT);
 }
 
 exports.generateExerciseRecommendation = onRequest(async (req, res) => {
@@ -23,17 +23,17 @@ exports.generateExerciseRecommendation = onRequest(async (req, res) => {
 
       // --- Healthcheck ---
       if (req.method === "GET") {
-        console.log("🩺 Healthcheck recibido");
+        console.log(" Healthcheck recibido");
         return res.status(200).json({
           ok: true,
-          message: "✅ Endpoint activo. Usa POST con { userId } para obtener una recomendación."
+          message: " Endpoint activo. Usa POST con { userId } para obtener una recomendación."
         });
       }
 
       if (req.method === "OPTIONS") return res.status(204).send("");
 
       if (req.method !== "POST") {
-        console.warn("⚠️ Método no permitido:", req.method);
+        console.warn(" Método no permitido:", req.method);
         return res.status(405).json({
           error: "Método no permitido",
           recommendation: "Usa POST con { userId } para obtener tu recomendación 🌿"
@@ -42,9 +42,9 @@ exports.generateExerciseRecommendation = onRequest(async (req, res) => {
 
       // --- Entrada ---
       let { userId } = req.body || {};
-      console.log("📩 Solicitud recibida para userId:", userId);
+      console.log(" Solicitud recibida para userId:", userId);
 
-      // 🧹 Limpieza del userId (para evitar caracteres ocultos o saltos de línea)
+      //  Limpieza del userId (para evitar caracteres ocultos o saltos de línea)
       if (typeof userId === "string") {
         userId = userId.trim();
       }
@@ -58,18 +58,18 @@ exports.generateExerciseRecommendation = onRequest(async (req, res) => {
 
       // --- Datos de Firestore ---
       const db = admin.firestore();
-      console.log("🧠 Intentando leer usuario de Firestore (colección 'users')...");
+      console.log(" Intentando leer usuario de Firestore (colección 'users')...");
       let docSnap = await db.collection("users").doc(userId).get();
 
       if (!docSnap.exists) {
-        console.log("⚠️ No existe documento con ese ID. Intentando buscar por email...");
+        console.log(" No existe documento con ese ID. Intentando buscar por email...");
         const q = await db.collection("users").where("email", "==", userId).limit(1).get();
 
         if (q.empty) {
-          console.error("❌ Usuario no encontrado en Firestore.");
+          console.error(" Usuario no encontrado en Firestore.");
           return res.status(404).json({
             found: false,
-            message: "❌ Usuario no encontrado en Firestore",
+            message: " Usuario no encontrado en Firestore",
             project: "senior-fitness-app"
           });
         }
@@ -77,9 +77,9 @@ exports.generateExerciseRecommendation = onRequest(async (req, res) => {
         docSnap = q.docs[0];
       }
 
-      console.log("✅ Usuario encontrado correctamente en Firestore.");
+      console.log(" Usuario encontrado correctamente en Firestore.");
       const user = docSnap.data() || {};
-      console.log("📄 Datos del usuario:", JSON.stringify(user, null, 2));
+      console.log(" Datos del usuario:", JSON.stringify(user, null, 2));
 
       const name = user.name || "Usuario";
       const age = user.age ?? 65;
@@ -130,12 +130,12 @@ Usa máximo 2 emojis.
       // --- Configuración Vertex AI ---
       const project = process.env.GCLOUD_PROJECT || "senior-fitness-app";
       const location = "us-east1";
-      console.log("🎯 VertexAI conectado a proyecto:", project, "| región:", location);
+      console.log(" VertexAI conectado a proyecto:", project, "| región:", location);
 
       const vertexAI = new VertexAI({ project, location });
       const model = vertexAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-      console.log("🚀 Solicitando respuesta a Gemini 2.5 Flash...");
+      console.log(" Solicitando respuesta a Gemini 2.5 Flash...");
       const result = await model.generateContent({
         contents: [{ role: "user", parts: [{ text: prompt }] }],
         generationConfig: { temperature: 0.8, topP: 0.9, maxOutputTokens: 512 }
@@ -164,7 +164,7 @@ Usa máximo 2 emojis.
       try {
         recommendation = JSON.parse(rawText);
       } catch (err) {
-        console.warn("⚠️ No se pudo parsear JSON. Texto recibido:", rawText);
+        console.warn(" No se pudo parsear JSON. Texto recibido:", rawText);
         recommendation = {
           mensaje: "¡Hola! 🌞 Hoy te recomiendo hacer algunos estiramientos suaves y mantenerte hidratado.",
           ejercicio: {
@@ -178,7 +178,7 @@ Usa máximo 2 emojis.
       }
 
       // --- Respuesta final ---
-      console.log("✅ Recomendación generada correctamente para", name);
+      console.log(" Recomendación generada correctamente para", name);
       return res.status(200).json({
         recommendation,
         userId,
@@ -187,7 +187,7 @@ Usa máximo 2 emojis.
         timestamp: new Date().toISOString()
       });
     } catch (err) {
-      console.error("❌ Error general:", err);
+      console.error(" Error general:", err);
       return res.status(500).json({
         error: "Error interno del servidor",
         recommendation: {

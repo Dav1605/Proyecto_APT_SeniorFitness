@@ -5,18 +5,18 @@ const admin = require("firebase-admin");
 
 if (!admin.apps.length) {
   admin.initializeApp({ projectId: "senior-fitness-app" });
-  console.log("🔥 Firebase Admin inicializado correctamente (index.js)");
+  console.log(" Firebase Admin inicializado correctamente (index.js)");
 }
 
 const db = admin.firestore();
 
 // ======================================================
-// 🧠 Función principal de Sofi
+//  Función principal de Sofi
 // ======================================================
 exports.generateExerciseRecommendation = generateExerciseRecommendation;
 
 // ======================================================
-// 🧩 Función: checkUser (ID o Email, con retorno del ID real)
+//  Función: checkUser (ID o Email, con retorno del ID real)
 // ======================================================
 exports.checkUser = functions.https.onRequest(async (req, res) => {
   try {
@@ -36,7 +36,7 @@ exports.checkUser = functions.https.onRequest(async (req, res) => {
     let docSnap = null;
     let foundBy = null;
 
-    // 1️⃣ Intentar buscar por ID
+    // 1️ Intentar buscar por ID
     if (cleanUserId) {
       const doc = await db.collection("users").doc(cleanUserId).get();
       if (doc.exists) {
@@ -45,7 +45,7 @@ exports.checkUser = functions.https.onRequest(async (req, res) => {
       }
     }
 
-    // 2️⃣ Buscar por correo si no se encontró
+    // 2️ Buscar por correo si no se encontró
     if (!docSnap && cleanEmail) {
       const q = await db.collection("users").where("email", "==", cleanEmail).limit(1).get();
       if (!q.empty) {
@@ -54,22 +54,22 @@ exports.checkUser = functions.https.onRequest(async (req, res) => {
       }
     }
 
-    // 3️⃣ No encontrado
+    // 3️ No encontrado
     if (!docSnap) {
       return res.status(404).json({
         found: false,
-        message: "❌ Usuario no encontrado en Firestore",
+        message: " Usuario no encontrado en Firestore",
         searched: { by: userId ? "userId" : "email", value: userId || email },
       });
     }
 
-    // 4️⃣ Usuario encontrado
+    // 4️ Usuario encontrado
     const user = docSnap.data();
     return res.status(200).json({
       found: true,
-      message: "✅ Usuario encontrado correctamente",
+      message: " Usuario encontrado correctamente",
       foundBy,
-      realUserId: docSnap.id, // 👈 aquí te devuelve el ID verdadero del documento
+      realUserId: docSnap.id, 
       name: user.name || "Sin nombre",
       email: user.email,
       age: user.age ?? null,
@@ -77,7 +77,7 @@ exports.checkUser = functions.https.onRequest(async (req, res) => {
       level: user.level || user.fitness_level || "principiante",
     });
   } catch (err) {
-    console.error("❌ Error en checkUser:", err);
+    console.error(" Error en checkUser:", err);
     return res.status(500).json({ error: err.message });
   }
 });

@@ -11,28 +11,28 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 🔥 Firebase (versiones estables y compatibles entre sí)
+  #  Firebase (versiones estables y compatibles entre sí)
   firebase_core: ^2.24.0
   firebase_auth: ^4.17.0
   cloud_firestore: ^4.15.0
   firebase_storage: ^11.7.7
   firebase_messaging: ^14.9.4
-  firebase_analytics: ^10.10.7   # ✅ compatible con firebase_core 2.x
+  firebase_analytics: ^10.10.7   # compatible con firebase_core 2.x
   image_picker: ^1.1.1
 
-  # 🌐 HTTP y APIs externas
+  #  HTTP y APIs externas
   http: ^1.1.0
   googleapis: ^15.0.0
 
-  # 💾 Almacenamiento local
+  #  Almacenamiento local
   shared_preferences: ^2.2.2
   flutter_dotenv: ^5.1.0
 
-  # 🧠 Utilidades
+  #  Utilidades
   intl: ^0.19.0
   equatable: ^2.0.5
 
-  # 🎨 UI y diseño
+  #  UI y diseño
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
   cached_network_image: ^3.3.1
@@ -41,11 +41,11 @@ dependencies:
   animations: ^2.0.10
   confetti: ^0.7.0
 
-  # 🔔 Notificaciones locales + zonas horarias
+  #  Notificaciones locales + zonas horarias
   flutter_local_notifications: ^18.0.1
   timezone: ^0.10.1
 
-  # 🤖 IA (Gemini)
+  #  IA (Gemini)
   google_generative_ai: ^0.4.7
 
 dev_dependencies:

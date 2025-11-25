@@ -37,7 +37,7 @@ class ExerciseRequest(BaseModel):
     conditions: List[str]
     activity_level: str = "principiante"
 
-# Corpus de ejercicios (tu JSON)
+# Corpus de ejercicios (JSON)
 EXERCISE_CORPUS = [
     {
         "id": 1,
@@ -95,7 +95,7 @@ async def recommend_exercises(request: ExerciseRequest):
                 if exercise["condicion"].lower() == condition.lower():
                     recommended_exercises.append(exercise)
         
-        # Generar recomendación con OpenAI
+        # Generar recomendación
         prompt = f"""
         Usuario: {user['name']}, {user['age']} años, {user['gender']}
         Condiciones: {', '.join(request.conditions)}
